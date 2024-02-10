@@ -1,5 +1,3 @@
-// Your JavaScript code goes here
-
 // Function to handle login form submission
 function handleLogin(event) {
     event.preventDefault();
