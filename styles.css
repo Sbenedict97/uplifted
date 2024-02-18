@@ -1,14 +1,14 @@
-
+/* Your CSS styles go here */
 body {
     font-family: Arial, sans-serif;
-    background-color: #386641;
+    background-color: #f0f0f0;
     margin: 0;
     padding: 0;
 }
 
 header, footer {
-    background-color: #F2E8CF;
-    color: #BC4749;
+    background-color: #333;
+    color: #fff;
     padding: 10px;
     text-align: center;
 }
@@ -19,7 +19,7 @@ nav {
 
 nav a {
     margin-right: 10px;
-    color: #6A994E;
+    color: #fff;
     text-decoration: none;
 }
 
@@ -29,8 +29,8 @@ main {
 
 footer {
     margin-top: 20px;
-    background-color: #F2E8CF;
-    color: #A7C957;
+    background-color: #333;
+    color: #fff;
     padding: 10px;
     text-align: center;
 }
@@ -47,12 +47,12 @@ input, button {
 }
 
 button {
-    background-color: #6A994E;
-    color: #000000;
+    background-color: #007bff;
+    color: #fff;
     border: none;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #999999;
+    background-color: #0056b3;
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uplifted Weight Training App - Workout</title>
+    <title>Uplifted Weight Training App - Login</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,16 +12,41 @@
         <nav>
             <a href="index.html">Home</a>
             <a href="login.html">Login</a>
+            <a href="workout.html">Workout</a>
             <a href="tracking.html">Tracking</a>
         </nav>
     </header>
 
     <main>
-        <p>This is the workout page of the Uplifted Weight Training App.</p>
+        <section id="exercise-search">
+            <h2>Exercise Search</h2>
+            <form id="exercise-search-form">
+                <label for="muscle">Enter Muscle Group:</label>
+                <input type="text" id="muscle" name="muscle">
+                <button type="submit">Search</button>
+            </form>
+            <div id="search-results">
+                <!-- Display search results here -->
+            </div>
+        </section>
+        <section id="tracking">
+                   <h2>Workout Tracking</h2>
+                <form id="workout-form">
+                    <label for="exercise-name">Exercise Name:</label>
+                    <input type="text" id="exercise-name" name="exercise-name" required>
+                    <label for="sets">Sets:</label>
+                    <input type="number" id="sets" name="sets" min="1" required>
+                    <label for="reps">Reps:</label>
+                    <input type="number" id="reps" name="reps" min="1" required>
+                    <label for="weight">Weight (lbs):</label>
+                    <input type="number" id="weight" name="weight" min="0" required>
+                    <button type="submit">Save Workout</button>
+                </form>
+            </section>
+            
+        </section>
     </main>
-
-    <footer>
-        <p>&copy; 2024 Uplifted Weight Training App</p>
-    </footer>
+    <!-- Include JavaScript file here -->
+    <script src="script.js"></script>
 </body>
 </html>
