@@ -1,14 +1,18 @@
-/* Your CSS styles go here */
+/* Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@100;200;300;400;500;600;700&display=swap');
+
+/* Global Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Josefin Slab', serif;
+    background-color: #F2E8CF; /* Light beige */
+    color: #386641; /* Dark green */
     margin: 0;
     padding: 0;
 }
 
 header, footer {
-    background-color: #333;
-    color: #fff;
+    background-color: #6A994E; /* Green */
+    color: #F2E8CF; /* Light beige */
     padding: 10px;
     text-align: center;
 }
@@ -19,7 +23,7 @@ nav {
 
 nav a {
     margin-right: 10px;
-    color: #fff;
+    color: #F2E8CF; /* Light beige */
     text-decoration: none;
 }
 
@@ -29,8 +33,8 @@ main {
 
 footer {
     margin-top: 20px;
-    background-color: #333;
-    color: #fff;
+    background-color: #6A994E; /* Green */
+    color: #F2E8CF; /* Light beige */
     padding: 10px;
     text-align: center;
 }
@@ -47,12 +51,23 @@ input, button {
 }
 
 button {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #BC4749; /* Red */
+    color: #F2E8CF; /* Light beige */
     border: none;
     cursor: pointer;
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    font-size: 16px; 
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #386641; /* Dark green */
+}
+
+img {
+    max-width: 75%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    padding: 20px; 
 }

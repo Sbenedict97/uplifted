@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uplifted Weight Training App - Login</title>
+    <title>Uplifted Workouts</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Welcome to Uplifted</h1>
+        <h1>Workout</h1>
         <nav>
             <a href="index.html">Home</a>
             <a href="login.html">Login</a>
@@ -21,8 +21,13 @@
         <section id="exercise-search">
             <h2>Exercise Search</h2>
             <form id="exercise-search-form">
-                <label for="muscle">Enter Muscle Group:</label>
-                <input type="text" id="muscle" name="muscle">
+                <label for="muscle">Select Muscle Group:</label>
+                <select id="muscle" name="muscle">
+                    <option value="chest">Chest</option>
+                    <option value="back">Back</option>
+                    <option value="legs">Legs</option>
+                    <option value="arms">Arms</option>
+                </select>
                 <button type="submit">Search</button>
             </form>
             <div id="search-results">
@@ -30,23 +35,20 @@
             </div>
         </section>
         <section id="tracking">
-                   <h2>Workout Tracking</h2>
-                <form id="workout-form">
-                    <label for="exercise-name">Exercise Name:</label>
-                    <input type="text" id="exercise-name" name="exercise-name" required>
-                    <label for="sets">Sets:</label>
-                    <input type="number" id="sets" name="sets" min="1" required>
-                    <label for="reps">Reps:</label>
-                    <input type="number" id="reps" name="reps" min="1" required>
-                    <label for="weight">Weight (lbs):</label>
-                    <input type="number" id="weight" name="weight" min="0" required>
-                    <button type="submit">Save Workout</button>
-                </form>
-            </section>
-            
+            <h2>Workout Tracking</h2>
+            <form id="workout-form">
+                <label for="exercise-name">Exercise Name:</label>
+                <input type="text" id="exercise-name" name="exercise-name" required>
+                <label for="sets">Sets:</label>
+                <input type="number" id="sets" name="sets" min="1" required>
+                <label for="reps">Reps:</label>
+                <input type="number" id="reps" name="reps" min="1" required>
+                <label for="weight">Weight (lbs):</label>
+                <input type="number" id="weight" name="weight" min="0" required>
+                <button type="submit">Save Workout</button>
+            </form>
         </section>
     </main>
-    <!-- Include JavaScript file here -->
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

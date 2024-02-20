@@ -1,9 +1,12 @@
+// JavaScript code for workout tracking and exercise search
+
 // Function to save workout data locally
 function saveWorkoutLocally(workoutData) {
     if (typeof Storage !== "undefined") {
         let savedWorkouts = JSON.parse(localStorage.getItem('savedWorkouts')) || [];
         savedWorkouts.push(workoutData);
         localStorage.setItem('savedWorkouts', JSON.stringify(savedWorkouts));
+        displaySavedWorkouts(); // Update displayed workouts after saving
         alert('Workout saved successfully!');
     } else {
         console.error('Local storage is not supported.');
@@ -25,7 +28,7 @@ function displaySavedWorkouts() {
             li.textContent = `Date: ${date}, Exercise: ${workout.exerciseName}, Sets: ${workout.sets}, Reps: ${workout.reps}, Weight: ${workout.weight} lbs `;
             const deleteBtn = document.createElement('button');
             deleteBtn.textContent = 'Delete';
-            deleteBtn.addEventListener('click', function() {
+            deleteBtn.addEventListener('click', function () {
                 deleteWorkout(workout);
             });
             li.appendChild(deleteBtn);
@@ -39,15 +42,14 @@ function deleteWorkout(workout) {
     let savedWorkouts = JSON.parse(localStorage.getItem('savedWorkouts')) || [];
     savedWorkouts = savedWorkouts.filter(item => {
         return item.date !== workout.date ||
-               item.exerciseName !== workout.exerciseName ||
-               item.sets !== workout.sets ||
-               item.reps !== workout.reps ||
-               item.weight !== workout.weight;
+            item.exerciseName !== workout.exerciseName ||
+            item.sets !== workout.sets ||
+            item.reps !== workout.reps ||
+            item.weight !== workout.weight;
     });
     localStorage.setItem('savedWorkouts', JSON.stringify(savedWorkouts));
-    displaySavedWorkouts();
+    displaySavedWorkouts(); // Update displayed workouts after deleting
 }
-
 
 // Function to fetch exercises from the API based on user input
 function fetchExercises(muscle) {
@@ -59,18 +61,18 @@ function fetchExercises(muscle) {
             'X-Api-Key': apiKey
         }
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        displaySearchResults(data);
-    })
-    .catch(error => {
-        console.error('Error fetching exercises:', error);
-    });
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            displaySearchResults(data);
+        })
+        .catch(error => {
+            console.error('Error fetching exercises:', error);
+        });
 }
 
 // Function to display search results
@@ -93,31 +95,40 @@ document.addEventListener('DOMContentLoaded', function() {
     displaySavedWorkouts();
 
     document.getElementById('workout-form').addEventListener('submit', function(event) {
-        event.preventDefault();
+        event.preventDefault(); // Prevent the default form submission behavior
         const exerciseName = document.getElementById('exercise-name').value.trim();
         const sets = parseInt(document.getElementById('sets').value.trim());
         const reps = parseInt(document.getElementById('reps').value.trim());
         const weight = parseInt(document.getElementById('weight').value.trim());
-        const date = new Date().toLocaleDateString(); // Get the current date
 
-        const workoutData = {
-            date,
-            exerciseName,
-            sets,
-            reps,
-            weight
-        };
-        saveWorkoutLocally(workoutData);
-        displaySavedWorkouts();
-        this.reset();
+        // Check if all required fields are filled
+        if (exerciseName && sets && reps && weight) {
+            const date = new Date().toLocaleDateString(); // Get the current date
+
+            const workoutData = {
+                date,
+                exerciseName,
+                sets,
+                reps,
+                weight
+            };
+            saveWorkoutLocally(workoutData);
+            displaySavedWorkouts(); // Update the displayed workouts
+            alert('Workout saved successfully!'); // Show a notification
+            this.reset(); // Reset the form
+        } else {
+            alert('Please fill in all required fields.'); // Display an alert if fields are missing
+        }
     });
 
     document.getElementById('exercise-search-form').addEventListener('submit', function(event) {
-        event.preventDefault();
+        event.preventDefault(); // Prevent the default form submission behavior
         const muscle = document.getElementById('muscle').value.trim();
         fetchExercises(muscle);
     });
 });
+
+
 // Function to save cached workout data for the tracking page
 function saveCachedWorkout(workoutData) {
     localStorage.setItem('cachedWorkout', JSON.stringify(workoutData));
@@ -134,8 +145,9 @@ function displayCachedWorkout() {
     document.getElementById('cached-workout').textContent = `Cached Workout: ${JSON.stringify(cachedWorkout)}`;
 }
 
-// Event listener for caching workout data
-document.getElementById('cache-workout-btn').addEventListener('click', function() {
+// Event listener
+// for caching workout data
+document.getElementById('cache-workout-btn').addEventListener('click', function () {
     const exerciseName = document.getElementById('exercise-name').value.trim();
     const sets = parseInt(document.getElementById('sets').value.trim());
     const reps = parseInt(document.getElementById('reps').value.trim());
@@ -151,3 +163,8 @@ document.getElementById('cache-workout-btn').addEventListener('click', function(
     saveCachedWorkout(workoutData);
     displayCachedWorkout();
 });
+
+// Display cached workout when the page loads
+window.onload = function () {
+    displayCachedWorkout();
+};
