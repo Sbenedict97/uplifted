@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
     displaySavedWorkouts();
 
     document.getElementById('workout-form').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent the default form submission behavior
+        event.preventDefault(); 
         const exerciseName = document.getElementById('exercise-name').value.trim();
         const sets = parseInt(document.getElementById('sets').value.trim());
         const reps = parseInt(document.getElementById('reps').value.trim());
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Check if all required fields are filled
         if (exerciseName && sets && reps && weight) {
-            const date = new Date().toLocaleDateString(); // Get the current date
+            const date = new Date().toLocaleDateString();
 
             const workoutData = {
                 date,
@@ -113,11 +113,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 weight
             };
             saveWorkoutLocally(workoutData);
-            displaySavedWorkouts(); // Update the displayed workouts
-            alert('Workout saved successfully!'); // Show a notification
-            this.reset(); // Reset the form
+            displaySavedWorkouts();
+            alert('Workout saved successfully!'); 
+            this.reset(); 
         } else {
-            alert('Please fill in all required fields.'); // Display an alert if fields are missing
+            alert('Please fill in all required fields.'); 
         }
     });
 
